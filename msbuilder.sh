@@ -12,6 +12,21 @@ setup_utlities() {
 
     BOLD_TEXT_FORMAT='\e[1m'
     RESET_TEXT_FORMAT='\e[0m'
+
+    CURRENT_DIRECTORY='$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )'
+
+    FANCY_MS_BUILDER_FILE='fancymsbuilder.yaml'
+}
+
+yaml_template() {
+    echo -e """
+        metadata:
+            version: 1.0
+    """ > $FANCY_MS_BUILDER_FILE
+)
+
+# Generate the YAML file
+echo "$yaml_content" > "$file_path"
 }
 
 echo -e '                                                                             '
