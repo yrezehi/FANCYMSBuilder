@@ -23,10 +23,6 @@ yaml_template() {
         metadata:
             version: 1.0
     """ > $FANCY_MS_BUILDER_FILE
-)
-
-# Generate the YAML file
-echo "$yaml_content" > "$file_path"
 }
 
 echo -e '                                                                             '
