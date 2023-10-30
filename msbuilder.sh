@@ -23,7 +23,7 @@ yaml_template() {
 
 # $1 is the color and $2 is the string
 colorful_print() {
-    echo -e "$1 $2 $RESET_TEXT_FORMAT"
+    echo -e "\n$1 $2 $RESET_TEXT_FORMAT"
 }
 
 echo -e '                                                                             '
@@ -45,8 +45,14 @@ echo -e '|______________________________________________________________________
 echo -e '                                                                             '
 echo -e '                                  -V1.0-                                     '
 
-echo -e 'Where your solution is located?'
+colorful_print $PURPLE_TEXT_COLOR 'Where your solution is located?'
 
 if [ ! -f '$CURRENT_DIRECTORY/$FANCY_MS_BUILDER_FILE' ]; then
-    colorful_print $RED_TEXT_COLOR "\nThe configuration file $FANCY_MS_BUILDER_FILE was not found in current directory!"
+    colorful_print $RED_TEXT_COLOR "the configuration file $FANCY_MS_BUILDER_FILE was not found in current directory!"
+    exit 1
+fi
+
+if ! [ -x "$(command -v dotnet)" ]; then
+    colorful_print $RED_TEXT_COLOR "dotnet is not installed on the system!"
+    exit 1
 fi
