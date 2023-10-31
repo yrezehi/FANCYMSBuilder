@@ -14,6 +14,9 @@ RESET_TEXT_FORMAT='\e[0m'
 CURRENT_DIRECTORY='$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )'
 FANCY_MS_BUILDER_FILE='fancymsbuilder.yaml'
 
+# argument parser
+for ARGUMENT in "$@"; do export "${ARGUMENT%%=*}"="${ARGUMENT#*=}"; done
+
 yaml_template() {
     echo -e """
         metadata:
